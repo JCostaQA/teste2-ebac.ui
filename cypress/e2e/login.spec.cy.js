@@ -1,4 +1,5 @@
 /// <reference  types="cypress" />
+const perfil = require('../fixtures/perfil.json')
 
 context('funcionalidade de Login', () => {
 
@@ -17,7 +18,27 @@ context('funcionalidade de Login', () => {
 
     })
 
-    it.only('deve exibir uma mensagem de erro ao insirir usuario e senha errados', () => {
+    it('deve fazer login com sucesso - usando arquivo de dados', () => {
+
+        cy.get('[name="username"]').type(perfil.usuario)
+        cy.get('.woocommerce-form > :nth-child(2) > [name="password"]').type(perfil.senha)
+        cy.get('[name="login"]').click()
+
+
+    })
+
+    it.only('deve fazer login com sucesso - usando fixture', () => {
+
+        cy.fixture('perfil').then(dados => {
+            cy.get('[name="username"]').type(dados.usuario)
+            cy.get('.woocommerce-form > :nth-child(2) > [name="password"]').type(dados.senha, {log: false})
+            cy.get('[name="login"]').click()
+
+        })
+
+    })
+
+    it('deve exibir uma mensagem de erro ao insirir usuario e senha errados', () => {
 
         cy.get('[name="username"]').type('teste@gmail.com')
         cy.get('.woocommerce-form > :nth-child(2) > [name="password"]').type('teste123')
