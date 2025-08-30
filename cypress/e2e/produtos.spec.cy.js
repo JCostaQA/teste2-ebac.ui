@@ -34,11 +34,11 @@ describe('funcionalidade Página de produtos', () => {
 
     })
 
-    it.only('Deve adicionar produtos ao carrinho - Usando Comanado customziado', () =>{
+    it('Deve adicionar produtos ao carrinho - Usando Comanado customziado', () =>{
         cy.addProdutos('Aero Daily Fitness Tee', 'L','Black', 2)
     })
     
-     it.only('Deve adicionar produtos ao carrinho - Usando Comanado customziado', () =>{
+     it('Deve adicionar produtos ao carrinho - Usando Comanado customziado', () =>{
         cy.addProdutos('Ariel Roll Sleeve Sweatshirt', 'L','Red', 5)
     })
 
